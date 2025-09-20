@@ -4,7 +4,7 @@ class LearningApp {
         this.currentScreen = 'loading';
         this.gameMode = null;
         this.currentQuestion = 0;
-        this.totalQuestions = 10;
+        this.totalQuestions = 0; // 게임 시작 시 동적으로 설정
         this.gameScore = 0;
         this.totalScore = parseInt(localStorage.getItem('totalScore')) || 0;
         this.userLevel = parseInt(localStorage.getItem('userLevel')) || 1;
@@ -45,7 +45,8 @@ class LearningApp {
         document.getElementById('user-level').textContent = this.userLevel;
         document.getElementById('game-score').textContent = this.gameScore;
         document.getElementById('current-question').textContent = this.currentQuestion + 1;
-        document.getElementById('total-questions').textContent = this.totalQuestions;
+        // 무한 모드로 변경 - 총 문제 수 숨김
+        document.getElementById('total-questions').textContent = "∞";
     }
 
     // 이벤트 리스너 설정
@@ -116,6 +117,9 @@ class LearningApp {
         this.gameMode = type;
         this.currentQuestion = 0;
         this.gameScore = 0;
+        
+        // 무한 모드 - totalQuestions 설정 제거
+        
         this.hideAllScreens();
         document.getElementById('game-screen').classList.remove('hidden');
         document.getElementById('math-answers').classList.remove('hidden');
@@ -372,11 +376,8 @@ class LearningApp {
         
         // 빠르게 다음 문제로 넘어가기 (피드백은 계속 표시)
         setTimeout(() => {
-            if (this.currentQuestion < this.totalQuestions) {
-                this.generateMathProblem();
-            } else {
-                this.endGame();
-            }
+            // 무한 진행 - 문제 개수 제한 제거
+            this.generateMathProblem();
         }, 800); // 2초에서 0.8초로 단축
         
         // 피드백은 더 오래 표시 (다음 문제가 나와도 계속 보임)
@@ -405,6 +406,8 @@ class LearningApp {
         this.currentWordIndex = 0;
         this.currentQuestion = 0;
         this.gameScore = 0;
+        
+        // 무한 모드 - totalQuestions 설정 제거
         
         // 단어 목록 섞기
         this.shuffleArray(this.currentWordList);
@@ -543,11 +546,12 @@ class LearningApp {
         
         // 다음 문제 또는 게임 종료
         setTimeout(() => {
-            if (this.currentQuestion < this.totalQuestions && this.currentWordIndex < this.currentWordList.length) {
-                this.generateEnglishProblem();
-            } else {
-                this.endGame();
+            // 단어 목록이 끝나면 다시 섞어서 반복
+            if (this.currentWordIndex >= this.currentWordList.length) {
+                this.currentWordIndex = 0;
+                this.shuffleArray(this.currentWordList);
             }
+            this.generateEnglishProblem();
         }, 1000); // 3초에서 1초로 단축
         
         // 피드백은 더 오래 표시 (다음 문제가 나와도 계속 보임)
