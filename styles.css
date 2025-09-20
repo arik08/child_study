@@ -87,19 +87,62 @@ body {
     }
 }
 
-/* 메인 앱 */
+/* ================================================= */
+/* ✨✨✨ 핵심 수정 부분 시작 ✨✨✨ */
+/* ================================================= */
+
+/* 메인 앱 - Flexbox 컨테이너로 설정 */
 .app {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background: #F8F9FA;
+    display: flex; /* Flexbox 시작 */
+    flex-direction: column; /* 자식 요소들을 세로로 배치 */
 }
 
-/* 헤더 */
+/* 헤더 - Flex 아이템 설정 */
 .header {
     background: linear-gradient(135deg, #FF6B9D 0%, #4ECDC4 100%);
     color: white;
     padding: 1rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0; /* 헤더가 줄어들지 않도록 방지 */
 }
+
+/* 메인 메뉴 - 남는 공간을 모두 차지하도록 설정 */
+.main-menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem; /* 상단 여백 수정 */
+    width: 100%;
+    flex-grow: 1; /* 남는 공간을 모두 채움 (가장 중요!) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 내용을 세로 중앙에 배치 */
+}
+
+/* 서브 메뉴, 게임, 통계 화면 - 남는 공간을 모두 차지하도록 설정 */
+.sub-menu, .stats-screen {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem; /* 상단 여백 수정 */
+    width: 100%;
+    flex-grow: 1; /* 남는 공간을 모두 채움 */
+}
+
+.game-screen {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 1rem 1rem; /* 상단 여백 수정 */
+    width: 100%;
+    flex-grow: 1; /* 남는 공간을 모두 채움 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================================================= */
+/* ✨✨✨ 핵심 수정 부분 끝 ✨✨✨ */
+/* ================================================= */
+
 
 .header-content {
     max-width: 1200px;
@@ -148,13 +191,6 @@ body {
     gap: 0.3rem;
 }
 
-/* 메인 메뉴 */
-.main-menu {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6rem 1rem 2rem 1rem; /* 상단 패딩을 6rem으로 증가하여 헤더 공간 확보 */
-}
-
 .welcome-section {
     text-align: center;
     margin-bottom: 3rem;
@@ -186,15 +222,15 @@ body {
 
 .menu-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 300px에서 280px로 축소 */
-    gap: 1.5rem; /* 2rem에서 1.5rem으로 축소 */
-    margin-top: 1.5rem; /* 2rem에서 1.5rem으로 축소 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .menu-card {
     background: white;
     border-radius: 20px;
-    padding: 1.5rem; /* 2rem에서 1.5rem으로 축소 */
+    padding: 1.5rem;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -265,13 +301,6 @@ body {
     font-weight: 700;
 }
 
-/* 서브 메뉴 */
-.sub-menu {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6rem 1rem 2rem 1rem;
-}
-
 .sub-menu-header {
     display: flex;
     align-items: center;
@@ -310,14 +339,14 @@ body {
 
 .sub-menu-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* 250px에서 220px로 축소 */
-    gap: 1rem; /* 1.5rem에서 1rem으로 축소 */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
 }
 
 .sub-menu-card {
     background: white;
     border-radius: 15px;
-    padding: 1.2rem; /* 1.5rem에서 1.2rem으로 축소 */
+    padding: 1.2rem;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     cursor: pointer;
@@ -348,23 +377,13 @@ body {
     color: #7F8C8D;
 }
 
-/* 게임 화면 */
-.game-screen {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 6rem 1rem 1rem 1rem;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
 .game-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem; /* 2rem에서 1rem으로 축소 */
+    margin-bottom: 1rem;
     flex-wrap: wrap;
-    gap: 0.8rem; /* 1rem에서 0.8rem으로 축소 */
+    gap: 0.8rem;
 }
 
 .game-info {
@@ -398,13 +417,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1.5rem; /* 2rem에서 1.5rem으로 축소 */
+    gap: 1.5rem;
 }
 
 .question-area {
     background: white;
     border-radius: 20px;
-    padding: 1.5rem; /* 2rem에서 1.5rem으로 축소 */
+    padding: 1.5rem;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -588,10 +607,9 @@ body {
 }
 
 .game-character {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
     text-align: center;
+    margin-top: auto; /* Push character to the bottom of the flex container */
+    padding-bottom: 1rem;
 }
 
 .character {
@@ -615,6 +633,7 @@ body {
     max-width: 150px;
     word-wrap: break-word;
     position: relative;
+    margin: 0 auto;
 }
 
 .character-speech::after {
@@ -628,13 +647,6 @@ body {
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid white;
-}
-
-/* 통계 화면 */
-.stats-screen {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6rem 1rem 2rem 1rem;
 }
 
 .stats-header {
@@ -701,6 +713,190 @@ body {
     border-radius: 15px;
     padding: 1.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.chart-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2C3E50;
+    margin-bottom: 1rem;
+}
+
+.chart {
+    height: 200px;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.chart-bar {
+    background: linear-gradient(135deg, #4ECDC4, #45B7D1);
+    border-radius: 5px 5px 0 0;
+    min-width: 40px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.chart-bar:hover {
+    transform: scale(1.05);
+}
+
+.chart-label {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #7F8C8D;
+    white-space: nowrap;
+}
+
+.recent-history {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid #E0E0E0;
+    font-size: 0.9rem;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-subject {
+    font-weight: 700;
+    color: #2C3E50;
+}
+
+.history-result {
+    color: #7F8C8D;
+}
+
+/* 성취 팝업 */
+.achievement-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.achievement-content {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    max-width: 300px;
+    animation: achievementPop 0.5s ease;
+}
+
+@keyframes achievementPop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.achievement-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.achievement-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2C3E50;
+    margin-bottom: 1rem;
+}
+
+.achievement-text {
+    font-size: 1rem;
+    color: #7F8C8D;
+    margin-bottom: 1.5rem;
+}
+
+.achievement-close {
+    background: linear-gradient(135deg, #4ECDC4, #45B7D1);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.achievement-close:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .app-title {
+        font-size: 1.5rem;
+    }
+
+    .menu-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .sub-menu-cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .game-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .game-info {
+        justify-content: center;
+    }
+
+    .question-text {
+        font-size: 1.5rem;
+    }
+
+    .english-answers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .answer-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .stats-charts {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-section {
+        min-width: auto;
+    }
 }
 
 .chart-title {
