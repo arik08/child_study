@@ -1560,9 +1560,57 @@ body {
         padding: 1rem !important; /* 2rem에서 1rem으로 축소 */
     }
 
-    /* 게임 헤더 여백 축소 */
+    /* 게임 헤더 여백 축소 및 2줄 레이아웃 */
     .game-header {
-        margin-bottom: 1rem !important; /* 기존 여백 축소 */
+        margin-bottom: 0.8rem !important; /* 기존 여백 축소 */
+        display: grid !important; /* flex에서 grid로 변경 */
+        grid-template-columns: auto 1fr auto !important; /* 3열 그리드 */
+        grid-template-rows: auto auto !important; /* 2행 그리드 */
+        gap: 0.5rem !important;
+        align-items: center !important;
+    }
+
+    /* 나가기 버튼을 첫 번째 행 첫 번째 열에 */
+    .back-btn {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        font-size: 0.9rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+
+    /* 뜻 표시/숨김 버튼을 첫 번째 행 세 번째 열에 */
+    .meaning-toggle-container {
+        grid-column: 3 !important;
+        grid-row: 1 !important;
+    }
+
+    .meaning-toggle-btn {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+
+    /* 게임 정보(점수, 문제번호)를 두 번째 행 전체에 */
+    .game-info {
+        grid-column: 1 / -1 !important; /* 전체 열 사용 */
+        grid-row: 2 !important;
+        justify-content: center !important;
+        gap: 1.5rem !important; /* 점수와 문제번호 사이 간격 */
+    }
+
+    /* 영어 답변 버튼을 1줄로 좌우 배치 */
+    .english-answers {
+        flex-direction: row !important; /* column에서 row로 변경 */
+        justify-content: space-between !important; /* 좌우 끝에 배치 */
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+
+    .answer-btn {
+        width: 48% !important; /* 각 버튼이 화면의 48%씩 차지 */
+        max-width: none !important; /* max-width 제한 제거 */
+        min-width: auto !important;
+        font-size: 1rem !important; /* 글자 크기 약간 축소 */
+        padding: 0.8rem 1rem !important; /* 패딩 축소 */
     }
 
     /* 캐릭터 영역 여백 축소 */
@@ -1647,6 +1695,27 @@ body {
 
     .game-content {
         gap: 0.3rem !important;
+    }
+
+    /* 작은 화면에서 버튼 더 축소 */
+    .back-btn {
+        font-size: 0.8rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+
+    .meaning-toggle-btn {
+        font-size: 0.75rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+
+    .answer-btn {
+        font-size: 0.9rem !important;
+        padding: 0.7rem 0.8rem !important;
+    }
+
+    /* 게임 정보 글자 크기 축소 */
+    .game-score, .game-progress {
+        font-size: 0.85rem !important;
     }
 }
 
