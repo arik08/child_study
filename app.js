@@ -41,12 +41,16 @@ class LearningApp {
 
     // UI 업데이트
     updateUI() {
-        document.getElementById('total-score').textContent = this.totalScore;
-        document.getElementById('user-level').textContent = this.userLevel;
-        document.getElementById('game-score').textContent = this.gameScore;
-        document.getElementById('current-question').textContent = this.currentQuestion + 1;
-        // 무한 모드로 변경 - 총 문제 수 숨김
-        document.getElementById('total-questions').textContent = "∞";
+        const totalScoreEl = document.getElementById('total-score');
+        const userLevelEl = document.getElementById('user-level');
+        const gameScoreEl = document.getElementById('game-score');
+        const currentQuestionEl = document.getElementById('current-question');
+        
+        if (totalScoreEl) totalScoreEl.textContent = this.totalScore;
+        if (userLevelEl) userLevelEl.textContent = this.userLevel;
+        if (gameScoreEl) gameScoreEl.textContent = this.gameScore;
+        if (currentQuestionEl) currentQuestionEl.textContent = this.currentQuestion + 1;
+        // 무한 모드로 변경 - total-questions 요소는 HTML에서 제거됨
     }
 
     // 이벤트 리스너 설정
@@ -671,9 +675,13 @@ class LearningApp {
         const correctProblems = this.gameHistory.filter(record => record.isCorrect).length;
         const accuracyRate = totalProblems > 0 ? Math.round((correctProblems / totalProblems) * 100) : 0;
         
-        document.getElementById('total-problems').textContent = totalProblems;
-        document.getElementById('correct-problems').textContent = correctProblems;
-        document.getElementById('accuracy-rate').textContent = accuracyRate + '%';
+        const totalProblemsEl = document.getElementById('total-problems');
+        const correctProblemsEl = document.getElementById('correct-problems');
+        const accuracyRateEl = document.getElementById('accuracy-rate');
+        
+        if (totalProblemsEl) totalProblemsEl.textContent = totalProblems;
+        if (correctProblemsEl) correctProblemsEl.textContent = correctProblems;
+        if (accuracyRateEl) accuracyRateEl.textContent = accuracyRate + '%';
         
         this.updateWordStats();
         this.updateRecentHistory();
