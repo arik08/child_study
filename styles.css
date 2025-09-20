@@ -152,7 +152,7 @@ body {
 .main-menu {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 6rem 1rem 2rem 1rem; /* 상단 패딩을 6rem으로 증가하여 헤더 공간 확보 */
+    padding: 2rem 1rem 2rem 1rem;
 }
 
 .welcome-section {
@@ -269,7 +269,7 @@ body {
 .sub-menu {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 6rem 1rem 2rem 1rem;
+    padding: 2rem 1rem 2rem 1rem;
 }
 
 .sub-menu-header {
@@ -352,7 +352,7 @@ body {
 .game-screen {
     max-width: 800px;
     margin: 0 auto;
-    padding: 6rem 1rem 1rem 1rem;
+    padding: 2rem 1rem 1rem 1rem;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -634,7 +634,7 @@ body {
 .stats-screen {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 6rem 1rem 2rem 1rem;
+    padding: 2rem 1rem 2rem 1rem;
 }
 
 .stats-header {
