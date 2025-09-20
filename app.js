@@ -283,22 +283,27 @@ class LearningApp {
         this.processMathAnswer(isCorrect, timeSpent, correctAnswer);
     }
 
-    // 정답 보기 기능
+    // 다음 문제로 넘어가기 (틀렸을 때 사용)
     showMathAnswer() {
-        const correctAnswer = this.currentMathProblem.answer;
-        const timeSpent = ((Date.now() - this.mathStartTime) / 1000).toFixed(1);
+        // 버튼 숨기기
+        document.getElementById('show-answer-btn').classList.add('hidden');
         
-        // 정답 버튼 하이라이트
-        const choiceButtons = document.querySelectorAll('.choice-btn');
-        choiceButtons.forEach(btn => {
-            btn.classList.add('disabled');
-            if (parseInt(btn.textContent) === correctAnswer) {
-                btn.classList.add('correct');
+        // 바로 다음 문제로 넘어가기
+        this.currentQuestion++;
+        this.updateUI();
+        
+        setTimeout(() => {
+            this.generateMathProblem();
+        }, 300);
+        
+        // 피드백 정리
+        setTimeout(() => {
+            const feedback = document.getElementById('feedback');
+            if (feedback) {
+                feedback.textContent = '';
+                feedback.className = 'feedback';
             }
-        });
-        
-        // 정답 보기는 오답으로 처리
-        this.processMathAnswer(false, timeSpent, correctAnswer, true);
+        }, 500);
     }
 
     // 수학 답안 처리
@@ -367,10 +372,12 @@ class LearningApp {
             this.playErrorSound();
         }
         
-        // 정답 보기 버튼 표시 (틀렸을 때만)
+        // 다음 문제 버튼 표시 (틀렸을 때)
         if (!isCorrect && !showedAnswer) {
-            document.getElementById('show-answer-btn').classList.remove('hidden');
-            return; // 정답 보기를 누를 때까지 대기
+            const showAnswerBtn = document.getElementById('show-answer-btn');
+            showAnswerBtn.textContent = '다음 문제';
+            showAnswerBtn.classList.remove('hidden');
+            return; // 다음 문제 버튼을 누를 때까지 대기
         }
         
         // 수학 게임은 기록을 저장하지 않음 (영어 단어 학습에만 집중)
@@ -718,10 +725,10 @@ class LearningApp {
         const speechBubble = document.getElementById('character-speech');
         speechBubble.textContent = randomMessage;
         
-        // 3초 후 메시지 사라지기
-        setTimeout(() => {
-            speechBubble.textContent = '';
-        }, 3000);
+        // 메시지가 사라지지 않도록 setTimeout 제거
+        // setTimeout(() => {
+        //     speechBubble.textContent = '';
+        // }, 3000);
     }
 
     // 캐릭터 축하 애니메이션

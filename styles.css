@@ -1543,3 +1543,110 @@ body {
     }
 }
 
+/* 모바일 화면 최적화 - 더 많은 정보 표시 */
+@media (max-width: 768px) {
+    /* 헤더 패딩 줄이기 */
+    .header {
+        padding: 0.5rem !important; /* 1rem에서 0.5rem으로 축소 */
+    }
+
+    /* 게임 화면 패딩 대폭 축소 */
+    .game-screen {
+        padding: 0.5rem 1rem 0.5rem 1rem !important; /* 2rem에서 0.5rem으로 축소 */
+    }
+
+    /* 메인 메뉴, 서브 메뉴 패딩 축소 */
+    .main-menu, .sub-menu, .stats-screen {
+        padding: 1rem !important; /* 2rem에서 1rem으로 축소 */
+    }
+
+    /* 게임 헤더 여백 축소 */
+    .game-header {
+        margin-bottom: 1rem !important; /* 기존 여백 축소 */
+    }
+
+    /* 캐릭터 영역 여백 축소 */
+    .game-character {
+        margin-top: 0.5rem !important; /* 기존 margin-top 축소 */
+        margin-bottom: 0.5rem !important;
+        padding-bottom: 0.5rem !important; /* 1rem에서 0.5rem으로 축소 */
+    }
+
+    /* 캐릭터 크기 축소 */
+    .character {
+        font-size: 2rem !important; /* 3rem에서 2rem으로 축소 */
+        margin-bottom: 0.3rem !important;
+    }
+
+    /* 캐릭터 말풍선 최적화 */
+    .character-speech {
+        font-size: 0.8rem !important; /* 0.9rem에서 0.8rem으로 축소 */
+        padding: 0.4rem 0.8rem !important; /* 0.5rem 1rem에서 축소 */
+        max-width: 180px !important; /* 150px에서 180px로 약간 확장 */
+        line-height: 1.3 !important; /* 줄 간격 축소 */
+    }
+
+    /* 피드백 여백 축소 */
+    .feedback {
+        margin-bottom: 0.5rem !important; /* 기존 여백 축소 */
+        padding: 0.8rem !important; /* 내부 패딩 축소 */
+    }
+
+    /* 게임 콘텐츠 간격 축소 */
+    .game-content {
+        gap: 0.5rem !important; /* 1.5rem에서 0.5rem으로 대폭 축소 */
+        padding: 0 0.5rem !important;
+    }
+
+    /* 문제 영역 여백 축소 */
+    .question-area {
+        margin-bottom: 1rem !important; /* 기존 여백 축소 */
+    }
+
+    /* 선택지 영역 여백 축소 */
+    .math-choices {
+        gap: 0.8rem !important; /* 기존 gap 축소 */
+        margin-bottom: 1rem !important;
+    }
+
+    /* 웰컴 섹션 여백 축소 */
+    .welcome-section {
+        margin-bottom: 2rem !important; /* 3rem에서 2rem으로 축소 */
+    }
+
+    /* 메뉴 카드 간격 축소 */
+    .menu-cards {
+        gap: 1rem !important; /* 1.5rem에서 1rem으로 축소 */
+        margin-top: 1rem !important; /* 1.5rem에서 1rem으로 축소 */
+    }
+}
+
+/* 매우 작은 화면 (480px 이하) 추가 최적화 */
+@media (max-width: 480px) {
+    .header {
+        padding: 0.3rem !important;
+    }
+
+    .game-screen {
+        padding: 0.3rem 0.5rem !important;
+    }
+
+    .main-menu, .sub-menu, .stats-screen {
+        padding: 0.5rem !important;
+    }
+
+    .character {
+        font-size: 1.8rem !important;
+    }
+
+    .character-speech {
+        font-size: 0.75rem !important;
+        padding: 0.3rem 0.6rem !important;
+        max-width: 160px !important;
+    }
+
+    .game-content {
+        gap: 0.3rem !important;
+    }
+}
+
