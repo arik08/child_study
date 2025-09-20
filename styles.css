@@ -441,7 +441,7 @@ body {
 }
 
 .answer-area {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
@@ -881,13 +881,16 @@ body {
     }
 
     .english-answers {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row !important; /* column에서 row로 변경 */
+        align-items: center !important;
+        justify-content: space-between !important; /* 좌우 끝에 배치 */
+        gap: 0.5rem !important;
     }
 
     .answer-btn {
-        width: 100%;
-        max-width: 250px;
+        width: 49% !important; /* 100%에서 49%로 변경 */
+        max-width: none !important; /* 250px 제한 제거 */
+        padding: 0.8rem 0.2rem !important; /* 좌우 패딩 최소화 */
     }
 
     .stats-charts {
@@ -1065,13 +1068,16 @@ body {
     }
 
     .english-answers {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row !important; /* column에서 row로 변경 */
+        align-items: center !important;
+        justify-content: space-between !important; /* 좌우 끝에 배치 */
+        gap: 0.5rem !important;
     }
 
     .answer-btn {
-        width: 100%;
-        max-width: 250px;
+        width: 49% !important; /* 100%에서 49%로 변경 */
+        max-width: none !important; /* 250px 제한 제거 */
+        padding: 0.8rem 0.2rem !important; /* 좌우 패딩 최소화 */
     }
 
     .game-character {
@@ -1601,16 +1607,16 @@ body {
     .english-answers {
         flex-direction: row !important; /* column에서 row로 변경 */
         justify-content: space-between !important; /* 좌우 끝에 배치 */
-        gap: 1rem !important;
+        gap: 0.5rem !important; /* 1rem에서 0.5rem으로 간격 축소 */
         align-items: center !important;
     }
 
     .answer-btn {
-        width: 48% !important; /* 각 버튼이 화면의 48%씩 차지 */
+        width: 49% !important; /* 각 버튼이 화면의 49%씩 차지 (간격 줄인 만큼 증가) */
         max-width: none !important; /* max-width 제한 제거 */
         min-width: auto !important;
         font-size: 1rem !important; /* 글자 크기 약간 축소 */
-        padding: 0.8rem 1rem !important; /* 패딩 축소 */
+        padding: 0.8rem 0.2rem !important; /* 좌우 패딩을 더욱 최소화 */
     }
 
     /* 캐릭터 영역 여백 축소 */
@@ -1710,7 +1716,7 @@ body {
 
     .answer-btn {
         font-size: 0.9rem !important;
-        padding: 0.7rem 0.8rem !important;
+        padding: 0.7rem 0.2rem !important; /* 좌우 패딩을 0.8rem에서 0.2rem으로 더 축소 */
     }
 
     /* 게임 정보 글자 크기 축소 */
